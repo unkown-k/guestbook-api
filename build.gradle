@@ -1,0 +1,86 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.6.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+    configurations {
+        //remove default logger
+        all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+
+    }
+}
+allprojects {
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+    apply plugin: 'idea'
+    apply plugin: "java"
+    apply plugin: 'org.springframework.boot'  //使用springboot插件
+    apply plugin: 'io.spring.dependency-management'  //版本管理插件
+    sourceCompatibility = '1.8'
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+
+    dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+        //log4j2
+        compile "org.springframework.boot:spring-boot-starter-log4j2"
+        compile "com.lmax:disruptor:3.4.2"
+        compile 'mysql:mysql-connector-java'
+        compile("com.alibaba:fastjson:1.2.58")
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+    jar {
+    from('src/main/java') {
+        include '**/*.xml'
+    }
+}
+//指定哪些源文件（或文件夹下的源文件）要被编译，哪些源文件要被排除
+    sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            // src/main/java 可以将java目录下的所有非.java资源打包到classes下
+            srcDirs = ['src/main/java', 'src/main/resources']
+
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ["src/test/java", "src/test/api"]
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+     configurations {
+    //remove default logger
+    compile.exclude module: 'spring-boot-starter-logging'
+
+}
+}

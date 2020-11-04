@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="book_api.main" target="1.8" />
+      <module name="book_api.test" target="1.8" />
+      <module name="book_api.unkown.main" target="1.8" />
+      <module name="book_api.unkown.test" target="1.8" />
+      <module name="unkown_k.main" target="1.8" />
+      <module name="unkown_k.test" target="1.8" />
+      <module name="unkown_k.unkown.main" target="1.8" />
+      <module name="unkown_k.unkown.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
