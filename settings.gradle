@@ -1,7 +1,16 @@
+//插件版本统一管理
 pluginManagement {
-    repositories {
-        gradlePluginPortal()
+    resolutionStrategy {
+        eachPlugin {
+            if ( requested.id.id == 'org.springframework.boot' ) {
+                useModule( "org.springframework.boot:org.springframework.boot.gradle.plugin:${ver_springBoot}" )
+            }else if ( requested.id.id == 'com.gradle.build-scan' ) {
+                useModule( "com.gradle.build-scan:com.gradle.build-scan.gradle.plugin:${ver_pluginGradleScan}" )
+            }else if ( requested.id.id == 'io.spring.dependency-management' ) {
+                useModule( "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin:${ver_pluginSpringDependencyManagement}" )
+            }
+        }
     }
 }
-rootProject.name = 'book_api'
-include 'unkown'
+
+rootProject.name = pro_name
