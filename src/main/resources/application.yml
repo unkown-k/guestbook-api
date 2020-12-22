@@ -1,0 +1,22 @@
+server:
+  port: 9088
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 10
+    maxActive: 20
+    maxIdle: 10
+    maxWait: 6000
+    minIdle: 5
+    url: jdbc:mysql://194.0.19.247:3306/unkown_k?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    #serialization:
+      #write-dates-as-timestamps: true
+mybatis:
+  mapper-locations: classpath*:com/demo/**/dao/mapping/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

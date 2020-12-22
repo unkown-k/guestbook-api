@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.guestbook.dao.mapper.GuestBookMapper">
+
+
+    <select id="list" resultType="com.demo.guestbook.model.GuestBookDo"
+            parameterType="com.demo.guestbook.model.GuestBookDo">
+        SELECT id,title,content,creat_time,nick_name,head_portrait from message
+        <where>
+            <if test="title!=null and title!=''">
+                title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="id!=null and id!=0">
+                and id = #{id}
+            </if>
+            <if test="content!=null and content!=''">
+                and content LIKE CONCAT('%',#{content},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.demo.guestbook.model.GuestBookDo">
+        update message set title=#{title} where id=#{id}
+    </update>
+
+    <insert id="save" parameterType="com.demo.guestbook.model.GuestBookDo">
+        insert message (title,content,nick_name,head_portrait)
+        values (#{title},#{content},#{nickName},#{headPortrait})
+    </insert>
+
+    <update id="remove" parameterType="com.demo.guestbook.model.GuestBookDo">
+        update message set is_delete=1 where id=#{id}
+    </update>
+
+</mapper>

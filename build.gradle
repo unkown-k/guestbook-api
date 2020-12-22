@@ -36,7 +36,7 @@ dependencies {
     compile 'mysql:mysql-connector-java'
     compile("com.alibaba:fastjson:${ver_fastjson}")
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
-    // exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        // exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
 
