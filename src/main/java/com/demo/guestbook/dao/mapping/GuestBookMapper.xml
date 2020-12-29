@@ -9,7 +9,7 @@
     <select id="list" resultType="com.demo.guestbook.entity.GuestBook"
             parameterType="com.demo.guestbook.entity.GuestBook">
         SELECT
-               id,content,nick_name,head_portrait,gmt_create,gmt_modified
+               id,uid,content,nick_name,head_portrait,gmt_create,gmt_modified
         from guestbook
         <where>
             <if test="id!=null and id!=0">
@@ -21,23 +21,31 @@
         </where>
     </select>
 
+    <select id="get" resultType="com.demo.guestbook.entity.GuestBook"
+            parameterType="int">
+        SELECT
+        id,uid,content,nick_name,head_portrait,gmt_create,gmt_modified
+        from guestbook
+        where id = #{id}
+    </select>
+
     <update id="update" parameterType="com.demo.guestbook.entity.GuestBook">
         update guestbook
         set
             content=#{content},
             gmt_modified=now()
-        where id=#{id}
+        where id=#{id} and uid= #{uid}
     </update>
 
     <insert id="save" parameterType="com.demo.guestbook.entity.GuestBook">
         insert guestbook
-            (content,nick_name,head_portrait)
+            (uid,content,nick_name,head_portrait)
         values
-            (#{content},#{nickName},#{headPortrait})
+            (#{uid},#{content},#{nickName},#{headPortrait})
     </insert>
 
-    <delete id="remove" parameterType="int">
-        DELETE FROM guestbook WHERE id=#{id}
+    <delete id="remove" parameterType="com.demo.guestbook.entity.GuestBook">
+        DELETE FROM guestbook WHERE id=#{id} and uid= #{uid}
     </delete>
 
 </mapper>

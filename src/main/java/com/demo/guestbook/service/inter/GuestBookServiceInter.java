@@ -13,10 +13,10 @@ import com.demo.common.model.Result;
 public interface GuestBookServiceInter {
     /**
      * 查询留言列表
-     * @param guestBook
+     * @param uid
      * @return
      */
-    Result<GuestBook> list(GuestBook guestBook);
+    Result<GuestBook> list(String uid);
 
     /**
      * 修改一条留言
@@ -30,7 +30,7 @@ public interface GuestBookServiceInter {
      * @param id
      * @return
      */
-    Result remove(int id);
+    Result remove(GuestBook guestBook);
 
     /**
      * 新增一条留言

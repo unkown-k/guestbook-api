@@ -10,26 +10,16 @@ import java.util.Date;
  * @Time: 9:09
  */
 public class GuestBook {
-    private String content;
     private Integer id;
+    private String uid;
     private String nickName;
     private String headPortrait;
+    private String content;
     private Date gmtCreate;
     private Date gmtModified;
 
-    /**
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
+    private Integer edit;
 
-    /**
-     * @param content
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     /**
      * @return id
@@ -43,6 +33,20 @@ public class GuestBook {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return
+     */
+    public String getUid() {
+        return uid;
+    }
+
+    /**
+     * @param uid
+     */
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     /**
@@ -74,6 +78,20 @@ public class GuestBook {
     }
 
     /**
+     * @return content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
      * @return
      */
     public Date getGmtCreate() {
@@ -99,5 +117,19 @@ public class GuestBook {
      */
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    /**
+     * @return
+     */
+    public Integer getEdit() {
+        return edit;
+    }
+
+    /**
+     * @param edit
+     */
+    public void setEdit(Integer edit) {
+        this.edit = edit;
     }
 }

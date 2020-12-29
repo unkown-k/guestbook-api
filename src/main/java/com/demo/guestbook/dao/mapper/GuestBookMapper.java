@@ -22,6 +22,13 @@ public interface GuestBookMapper {
     List<GuestBook> list(GuestBook guestBook);
 
     /**
+     * 查询一条留言
+     * @param id
+     * @return
+     */
+    GuestBook get(int id);
+
+    /**
      * 修改一条留言
      * @param guestBook
      * @return
@@ -30,10 +37,10 @@ public interface GuestBookMapper {
 
     /**
      * 删除一条留言
-     * @param id
+     * @param guestBook
      * @return
      */
-    int remove(int id);
+    int remove(GuestBook guestBook);
 
     /**
      * 新增一条留言
