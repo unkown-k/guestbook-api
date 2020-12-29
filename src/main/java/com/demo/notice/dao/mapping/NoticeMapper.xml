@@ -7,7 +7,7 @@
 
     <select id="get" resultType="com.demo.notice.entity.Notice"
             parameterType="int">
-        SELECT  id,title,content,gmt_creat from notice
+        SELECT  id,title,content,gmt_create from notice
         where id = #{id}
     </select>
 
