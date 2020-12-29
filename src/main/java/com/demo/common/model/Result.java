@@ -9,7 +9,6 @@ import java.util.List;
  * @Date: 2020/11/2
  * @Time: 9:19
  */
-
 public class Result<T> {
     int code = 0;
     String msg = "ok";

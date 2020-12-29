@@ -1,6 +1,6 @@
 package com.demo.guestbook.dao.mapper;
 
-import com.demo.guestbook.model.GuestBookDo;
+import com.demo.guestbook.entity.GuestBook;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,8 +14,31 @@ import java.util.List;
  */
 @Mapper
 public interface GuestBookMapper {
-     List<GuestBookDo> list(GuestBookDo guestBookDo);
-     int update(GuestBookDo guestBookDo);
-     int remove(GuestBookDo guestBookDo);
-     int save(GuestBookDo guestBookDo);
+    /**
+     * 查询留言列表
+     * @param guestBook
+     * @return
+     */
+    List<GuestBook> list(GuestBook guestBook);
+
+    /**
+     * 修改一条留言
+     * @param guestBook
+     * @return
+     */
+    int update(GuestBook guestBook);
+
+    /**
+     * 删除一条留言
+     * @param id
+     * @return
+     */
+    int remove(int id);
+
+    /**
+     * 新增一条留言
+     * @param guestBook
+     * @return
+     */
+    int save(GuestBook guestBook);
 }

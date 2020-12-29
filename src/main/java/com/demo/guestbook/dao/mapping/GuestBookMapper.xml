@@ -6,13 +6,10 @@
 <mapper namespace="com.demo.guestbook.dao.mapper.GuestBookMapper">
 
 
-    <select id="list" resultType="com.demo.guestbook.model.GuestBookDo"
-            parameterType="com.demo.guestbook.model.GuestBookDo">
-        SELECT id,title,content,creat_time,nick_name,head_portrait from message
+    <select id="list" resultType="com.demo.guestbook.entity.GuestBook"
+            parameterType="com.demo.guestbook.entity.GuestBook">
+        SELECT id,content,creat_time,nick_name,head_portrait from guestbook
         <where>
-            <if test="title!=null and title!=''">
-                title LIKE CONCAT('%',#{title},'%')
-            </if>
             <if test="id!=null and id!=0">
                 and id = #{id}
             </if>
@@ -22,17 +19,17 @@
         </where>
     </select>
 
-    <update id="update" parameterType="com.demo.guestbook.model.GuestBookDo">
-        update message set title=#{title} where id=#{id}
+    <update id="update" parameterType="com.demo.guestbook.entity.GuestBook">
+        update guestbook set content=#{content} where id=#{id}
     </update>
 
-    <insert id="save" parameterType="com.demo.guestbook.model.GuestBookDo">
-        insert message (title,content,nick_name,head_portrait)
-        values (#{title},#{content},#{nickName},#{headPortrait})
+    <insert id="save" parameterType="com.demo.guestbook.entity.GuestBook">
+        insert guestbook (content,nick_name,head_portrait)
+        values (#{content},#{nickName},#{headPortrait})
     </insert>
 
-    <update id="remove" parameterType="com.demo.guestbook.model.GuestBookDo">
-        update message set is_delete=1 where id=#{id}
-    </update>
+    <delete id="remove" parameterType="int">
+        DELETE FROM guestbook WHERE id=#{id}
+    </delete>
 
 </mapper>

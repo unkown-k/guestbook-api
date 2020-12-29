@@ -2,7 +2,7 @@ package com.demo.guestbook.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.demo.common.model.Result;
-import com.demo.guestbook.model.GuestBookDo;
+import com.demo.guestbook.entity.GuestBook;
 import com.demo.guestbook.service.inter.GuestBookServiceInter;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,29 +28,52 @@ public class GuestBookController {
     @Resource
     GuestBookServiceInter guestBookServiceInter;
 
+    /**
+     * 查询留言列表
+     * @param guestBook
+     * @return
+     */
     @GetMapping
-    public Result<GuestBookDo> list(GuestBookDo guestBookDo) {
-        System.out.println("list " + JSON.toJSONString(guestBookDo));
-        return guestBookServiceInter.list(guestBookDo);
+    public Result<GuestBook> list(GuestBook guestBook) {
+        System.out.println("list " + JSON.toJSONString(guestBook));
+        return guestBookServiceInter.list(guestBook);
     }
 
+    /**
+     * 新增一条留言
+     * @param guestBook
+     * @return
+     */
     @PostMapping
-    public Result<GuestBookDo> save(@RequestBody GuestBookDo guestBookDo) {
-        System.out.println("save " + JSON.toJSONString(guestBookDo));
-        return guestBookServiceInter.save(guestBookDo);
+    public Result save(@RequestBody GuestBook guestBook) {
+        System.out.println("save " + JSON.toJSONString(guestBook));
+        //参数判断
+        return guestBookServiceInter.save(guestBook);
     }
 
 
+    /**
+     * 修改一条留言
+     * @param id
+     * @param guestBook
+     * @return
+     */
     @PatchMapping("/{id}")
-    public Result<GuestBookDo> update(@PathVariable Integer id, @RequestBody GuestBookDo guestBookDo) {
-        System.out.println("update " + JSON.toJSONString(guestBookDo));
-        return guestBookServiceInter.update(guestBookDo);
+    public Result update(@PathVariable Integer id, @RequestBody GuestBook guestBook) {
+        guestBook.setId(id);
+        System.out.println("update " + JSON.toJSONString(guestBook));
+        return guestBookServiceInter.update(guestBook);
     }
 
 
+    /**
+     * 删除一条留言
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
-    public Result<GuestBookDo> remove(@PathVariable Integer id, @RequestBody GuestBookDo guestBookDo) {
-        System.out.println("remove " + JSON.toJSONString(guestBookDo));
-        return guestBookServiceInter.remove(guestBookDo);
+    public Result remove(@PathVariable Integer id) {
+        System.out.println("remove " + id);
+        return guestBookServiceInter.remove(id);
     }
 }

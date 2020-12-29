@@ -5,49 +5,10 @@
 
 <mapper namespace="com.demo.notice.dao.mapper.NoticeMapper">
 
-
-    <select id="list" resultType="com.demo.notice.model.NoticeDo"
-            parameterType="com.demo.notice.model.NoticeDo">
-        SELECT id,title,content,creat_time from notice
-        <where>
-            <if test="title!=null and title!=''">
-                title LIKE CONCAT('%',#{title},'%')
-            </if>
-            <if test="id!=null and id!=0">
-                and id = #{id}
-            </if>
-            <if test="content!=null and content!=''">
-                and content LIKE CONCAT('%',#{content},'%')
-            </if>
-        </where>
-    </select>
-    <select id="get" resultType="com.demo.notice.model.NoticeDo"
-            parameterType="com.demo.notice.model.NoticeDo">
+    <select id="get" resultType="com.demo.notice.entity.Notice"
+            parameterType="int">
         SELECT  id,title,content,creat_time from notice
-        <where>
-            <if test="title!=null and title!=''">
-                title LIKE CONCAT('%',#{title},'%')
-            </if>
-            <if test="id!=null and id!=0">
-               and  id = #{id}
-            </if>
-            <if test="content!=null and content!=''">
-                and content LIKE CONCAT('%',#{content},'%')
-            </if>
-        </where>
-        order by id asc limit 1
+        where id = #{id}
     </select>
-    <update id="update" parameterType="com.demo.notice.model.NoticeDo">
-        update notice set title=#{title} where id=#{id}
-    </update>
-
-    <insert id="save" parameterType="com.demo.notice.model.NoticeDo">
-        insert notice (title,content)
-        values (#{title},#{content})
-    </insert>
-
-    <update id="remove" parameterType="com.demo.notice.model.NoticeDo">
-        update notice set is_delete=1 where id=#{id}
-    </update>
 
 </mapper>

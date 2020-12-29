@@ -2,7 +2,7 @@ package com.demo.guestbook.service.impl;
 
 import com.demo.common.model.Result;
 import com.demo.guestbook.dao.mapper.GuestBookMapper;
-import com.demo.guestbook.model.GuestBookDo;
+import com.demo.guestbook.entity.GuestBook;
 import com.demo.guestbook.service.inter.GuestBookServiceInter;
 import org.springframework.stereotype.Service;
 
@@ -21,51 +21,70 @@ public class GuestBookServiceImpl implements GuestBookServiceInter {
     @Resource
     GuestBookMapper guestBookMapper;
 
+    /**
+     * 查询留言列表
+     * @param guestBook
+     * @return
+     */
     @Override
-    public Result<GuestBookDo> list(GuestBookDo guestBookDo) {
-        Result<GuestBookDo> testModelResult = new Result<>();
-        List<GuestBookDo> guestBookDos = guestBookMapper.list(guestBookDo);
-        testModelResult.setData(guestBookDos);
-        return testModelResult;
+    public Result<GuestBook> list(GuestBook guestBook) {
+        Result<GuestBook> result = new Result<>();
+        List<GuestBook> guestBookList = guestBookMapper.list(guestBook);
+        result.setData(guestBookList);
+        return result;
     }
 
+    /**
+     * 修改一条留言
+     * @param guestBook
+     * @return
+     */
     @Override
-    public Result<GuestBookDo> update(GuestBookDo guestBookDo) {
-        Result<GuestBookDo> testModelResult = new Result<>();
-        int i = guestBookMapper.update(guestBookDo);
+    public Result update(GuestBook guestBook) {
+        Result result = new Result<>();
+        int i = guestBookMapper.update(guestBook);
         if (i > 0) {
             return new Result();
         } else {
-            testModelResult.setCode(4444);
-            testModelResult.setMsg("错误");
-            return testModelResult;
+            result.setCode(4444);
+            result.setMsg("错误");
+            return result;
         }
     }
 
+    /**
+     * 删除一条留言
+     * @param id
+     * @return
+     */
     @Override
-    public Result<GuestBookDo> remove(GuestBookDo guestBookDo) {
-        Result<GuestBookDo> testModelResult = new Result<>();
-        int i = guestBookMapper.remove(guestBookDo);
+    public Result remove(int id) {
+        Result result = new Result<>();
+        int i = guestBookMapper.remove(id);
         if (i > 0) {
             return new Result();
         } else {
-            testModelResult.setCode(4444);
-            testModelResult.setMsg("错误");
-            return testModelResult;
+            result.setCode(4444);
+            result.setMsg("错误");
+            return result;
         }
     }
 
+    /**
+     * 新增一条留言
+     * @param guestBook
+     * @return
+     */
     @Override
-    public Result<GuestBookDo> save(GuestBookDo guestBookDo) {
-        Result<GuestBookDo> testModelResult = new Result<>();
-        int i = 0;
-        i = guestBookMapper.save(guestBookDo);
+    public Result save(GuestBook guestBook) {
+        Result result = new Result<>();
+        int i = guestBookMapper.save(guestBook);
         if (i > 0) {
             return new Result();
         } else {
-            testModelResult.setCode(4444);
-            testModelResult.setMsg("错误");
-            return testModelResult;
+            result.setCode(4444);
+            result.setMsg("错误");
+            return result;
         }
     }
 }

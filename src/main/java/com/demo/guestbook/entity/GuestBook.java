@@ -1,4 +1,4 @@
-package com.demo.notice.model;
+package com.demo.guestbook.entity;
 
 import java.util.Date;
 
@@ -9,28 +9,12 @@ import java.util.Date;
  * @Date: 2020/11/2
  * @Time: 9:09
  */
-
-public class NoticeDo {
-    private String title;
+public class GuestBook {
     private String content;
     private Integer id;
-    private Integer isDelete;
     private Date creatTime;
-
-
-    /**
-     * @return title
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * @param title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    private String nickName;
+    private String headPortrait;
 
     /**
      * @return content
@@ -61,20 +45,6 @@ public class NoticeDo {
     }
 
     /**
-     * @return is_delete
-     */
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    /**
-     * @param isDelete
-     */
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
-
-    /**
      * @return
      */
     public Date getCreatTime() {
@@ -88,5 +58,31 @@ public class NoticeDo {
         this.creatTime = creatTime;
     }
 
+    /**
+     * @return
+     */
+    public String getNickName() {
+        return nickName;
+    }
 
+    /**
+     * @param nickName
+     */
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    /**
+     * @return
+     */
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
+
+    /**
+     * @param headPortrait
+     */
+    public void setHeadPortrait(String headPortrait) {
+        this.headPortrait = headPortrait;
+    }
 }

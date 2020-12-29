@@ -1,4 +1,4 @@
-package com.demo.guestbook.model;
+package com.demo.notice.entity;
 
 import java.util.Date;
 
@@ -10,14 +10,12 @@ import java.util.Date;
  * @Time: 9:09
  */
 
-public class GuestBookDo {
+public class Notice {
     private String title;
     private String content;
     private Integer id;
-    private Integer isDelete;
     private Date creatTime;
-    private String nickName;
-    private String headPortrait;
+
 
     /**
      * @return title
@@ -62,20 +60,6 @@ public class GuestBookDo {
     }
 
     /**
-     * @return is_delete
-     */
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    /**
-     * @param isDelete
-     */
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
-
-    /**
      * @return
      */
     public Date getCreatTime() {
@@ -89,31 +73,5 @@ public class GuestBookDo {
         this.creatTime = creatTime;
     }
 
-    /**
-     * @return
-     */
-    public String getNickName() {
-        return nickName;
-    }
 
-    /**
-     * @param nickName
-     */
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    /**
-     * @return
-     */
-    public String getHeadPortrait() {
-        return headPortrait;
-    }
-
-    /**
-     * @param headPortrait
-     */
-    public void setHeadPortrait(String headPortrait) {
-        this.headPortrait = headPortrait;
-    }
 }

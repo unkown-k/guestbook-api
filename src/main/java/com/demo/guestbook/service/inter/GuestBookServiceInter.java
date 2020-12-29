@@ -1,6 +1,6 @@
 package com.demo.guestbook.service.inter;
 
-import com.demo.guestbook.model.GuestBookDo;
+import com.demo.guestbook.entity.GuestBook;
 import com.demo.common.model.Result;
 
 /**
@@ -10,10 +10,32 @@ import com.demo.common.model.Result;
  * @Date: 2020/11/2
  * @Time: 9:04
  */
-
 public interface GuestBookServiceInter {
-    Result<GuestBookDo> list(GuestBookDo guestBookDo);
-    Result<GuestBookDo> update(GuestBookDo guestBookDo);
-    Result<GuestBookDo> remove(GuestBookDo guestBookDo);
-    Result<GuestBookDo> save(GuestBookDo guestBookDo);
+    /**
+     * 查询留言列表
+     * @param guestBook
+     * @return
+     */
+    Result<GuestBook> list(GuestBook guestBook);
+
+    /**
+     * 修改一条留言
+     * @param guestBook
+     * @return
+     */
+    Result update(GuestBook guestBook);
+
+    /**
+     * 删除一条留言
+     * @param id
+     * @return
+     */
+    Result remove(int id);
+
+    /**
+     * 新增一条留言
+     * @param guestBook
+     * @return
+     */
+    Result save(GuestBook guestBook);
 }
