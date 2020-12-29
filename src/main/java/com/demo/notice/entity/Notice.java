@@ -14,7 +14,7 @@ public class Notice {
     private String title;
     private String content;
     private Integer id;
-    private Date creatTime;
+    private Date gmtCreat;
 
 
     /**
@@ -62,16 +62,14 @@ public class Notice {
     /**
      * @return
      */
-    public Date getCreatTime() {
-        return creatTime;
+    public Date getGmtCreat() {
+        return gmtCreat;
     }
 
     /**
-     * @param creatTime
+     * @param gmtCreat
      */
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setGmtCreat(Date gmtCreat) {
+        this.gmtCreat = gmtCreat;
     }
-
-
 }

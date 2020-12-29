@@ -12,9 +12,10 @@ import java.util.Date;
 public class GuestBook {
     private String content;
     private Integer id;
-    private Date creatTime;
     private String nickName;
     private String headPortrait;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     /**
      * @return content
@@ -47,20 +48,6 @@ public class GuestBook {
     /**
      * @return
      */
-    public Date getCreatTime() {
-        return creatTime;
-    }
-
-    /**
-     * @param creatTime
-     */
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
-    }
-
-    /**
-     * @return
-     */
     public String getNickName() {
         return nickName;
     }
@@ -84,5 +71,33 @@ public class GuestBook {
      */
     public void setHeadPortrait(String headPortrait) {
         this.headPortrait = headPortrait;
+    }
+
+    /**
+     * @return
+     */
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
+
+    /**
+     * @param gmtCreate
+     */
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    /**
+     * @return
+     */
+    public Date getGmtModified() {
+        return gmtModified;
+    }
+
+    /**
+     * @param gmtModified
+     */
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
     }
 }

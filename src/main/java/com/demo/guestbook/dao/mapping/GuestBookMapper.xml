@@ -8,7 +8,9 @@
 
     <select id="list" resultType="com.demo.guestbook.entity.GuestBook"
             parameterType="com.demo.guestbook.entity.GuestBook">
-        SELECT id,content,creat_time,nick_name,head_portrait from guestbook
+        SELECT
+               id,content,nick_name,head_portrait,gmt_time,gmt_modified
+        from guestbook
         <where>
             <if test="id!=null and id!=0">
                 and id = #{id}
@@ -20,12 +22,18 @@
     </select>
 
     <update id="update" parameterType="com.demo.guestbook.entity.GuestBook">
-        update guestbook set content=#{content} where id=#{id}
+        update guestbook
+        set
+            content=#{content},
+            gmt_modified=now()
+        where id=#{id}
     </update>
 
     <insert id="save" parameterType="com.demo.guestbook.entity.GuestBook">
-        insert guestbook (content,nick_name,head_portrait)
-        values (#{content},#{nickName},#{headPortrait})
+        insert guestbook
+            (content,nick_name,head_portrait)
+        values
+            (#{content},#{nickName},#{headPortrait})
     </insert>
 
     <delete id="remove" parameterType="int">
