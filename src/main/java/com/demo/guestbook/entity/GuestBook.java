@@ -132,4 +132,18 @@ public class GuestBook {
     public void setEdit(Integer edit) {
         this.edit = edit;
     }
+
+    @Override
+    public String toString() {
+        return "GuestBook{" +
+            "id=" + id +
+            ", uid='" + uid + '\'' +
+            ", nickName='" + nickName + '\'' +
+            ", headPortrait='" + headPortrait + '\'' +
+            ", content='" + content + '\'' +
+            ", gmtCreate=" + gmtCreate +
+            ", gmtModified=" + gmtModified +
+            ", edit=" + edit +
+            '}';
+    }
 }

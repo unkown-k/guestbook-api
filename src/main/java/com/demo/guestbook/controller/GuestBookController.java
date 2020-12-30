@@ -1,6 +1,5 @@
 package com.demo.guestbook.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.demo.common.model.Result;
 import com.demo.guestbook.entity.GuestBook;
 import com.demo.guestbook.service.inter.GuestBookServiceInter;
@@ -59,7 +58,7 @@ public class GuestBookController {
      */
     @PostMapping
     public Result save(@RequestHeader(name = "uid") String uid, @RequestBody GuestBook guestBook) {
-        System.out.println("save " + JSON.toJSONString(guestBook));
+        System.out.println("save " + guestBook.toString());
         guestBook.setUid(uid);
         //参数判断
         Result result = new Result();
@@ -103,6 +102,7 @@ public class GuestBookController {
     public Result update(@PathVariable Integer id, @RequestHeader(name = "uid") String uid, @RequestBody GuestBook guestBook) {
         guestBook.setId(id);
         guestBook.setUid(uid);
+        System.out.println("update " + guestBook.toString());
         //参数判断
         Result result = new Result();
         if (uid == null || uid.length() != UID_LENGTH) {
@@ -110,7 +110,6 @@ public class GuestBookController {
             result.setMsg("UID不合法");
             return result;
         }
-        System.out.println("update " + JSON.toJSONString(guestBook));
         return guestBookServiceInter.update(guestBook);
     }
 
@@ -123,7 +122,7 @@ public class GuestBookController {
      */
     @DeleteMapping("/{id}")
     public Result remove(@PathVariable Integer id, @RequestHeader(name = "uid") String uid) {
-        System.out.println("remove " + id);
+        System.out.println("remove id:" + id + " uid:"+uid);
         GuestBook guestBook = new GuestBook();
         guestBook.setId(id);
         guestBook.setUid(uid);

@@ -7,10 +7,6 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
-configurations {
-    compile.exclude module: 'spring-boot-starter-logging'
-}
-
 group = pro_group
 version = pro_version
 mainClassName = pro_mainClassName
@@ -27,14 +23,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${ver_mybatisBoot}"
-    // log4j2
-    compile "org.springframework.boot:spring-boot-starter-log4j2"
-    compile "com.lmax:disruptor:${ver_disruptor}"
-    compile 'mysql:mysql-connector-java'
-    compile("com.alibaba:fastjson:${ver_fastjson}")
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${ver_mybatisBoot}"
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+    compile "mysql:mysql-connector-java:${ver_mysql}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         // exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
