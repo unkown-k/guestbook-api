@@ -27,7 +27,7 @@ public interface GuestBookServiceInter {
 
     /**
      * 删除一条留言
-     * @param id
+     * @param guestBook
      * @return
      */
     Result remove(GuestBook guestBook);

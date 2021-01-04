@@ -1,4 +1,4 @@
-# 零基础JavaWeb开发入门-留言板
+# 零基础全栈开发入门-留言板(java+vue)
 
 [留言板前端](https://github.com/unkown-k/guestbook-fed)
 
